@@ -1,0 +1,2153 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 21st Birthday, Siti Maefaulan! 💜✨</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    :root {
+      --bg-dark: #0a0412;
+      --bg-card: rgba(28, 12, 48, 0.65);
+      --bg-card-hover: rgba(45, 18, 77, 0.85);
+      --purple-primary: #a855f7;
+      --purple-light: #c084fc;
+      --purple-lighter: #e9d5ff;
+      --purple-glow: rgba(168, 85, 247, 0.4);
+      --purple-dark: #3b0764;
+      --purple-deep: #1e0936;
+      --lavender: #f3e8ff;
+      --accent-gold: #fbbf24;
+      --accent-pink: #f472b6;
+      --text-main: #f8fafc;
+      --text-muted: #d8b4fe;
+      --border-purple: rgba(192, 132, 252, 0.25);
+      --border-glow: rgba(216, 180, 254, 0.5);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+      selection-background-color: var(--purple-primary);
+    }
+
+    ::selection {
+      background: var(--purple-primary);
+      color: #fff;
+    }
+
+    /* Ambient Glowing Orbs Background */
+    .bg-gradient-mesh {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(147, 51, 234, 0.25) 0%, transparent 45%),
+        radial-gradient(circle at 85% 25%, rgba(217, 70, 239, 0.2) 0%, transparent 40%),
+        radial-gradient(circle at 50% 60%, rgba(107, 33, 168, 0.3) 0%, transparent 55%),
+        radial-gradient(circle at 80% 85%, rgba(168, 85, 247, 0.25) 0%, transparent 45%),
+        radial-gradient(circle at 20% 90%, rgba(91, 33, 182, 0.3) 0%, transparent 40%);
+      filter: blur(50px);
+      animation: pulseAura 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseAura {
+      0% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: scale(1.1) rotate(2deg);
+        opacity: 1;
+      }
+    }
+
+    #particlesCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Glass Container Helper */
+    .glass-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border-purple);
+      border-radius: 24px;
+      box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.6),
+        0 0 25px 0 rgba(168, 85, 247, 0.15);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .glass-card:hover {
+      border-color: var(--border-glow);
+      box-shadow: 0 20px 45px -8px rgba(0, 0, 0, 0.7),
+        0 0 35px 2px rgba(192, 132, 252, 0.3);
+    }
+
+    /* Floating Navigation / Control Bar */
+    .control-bar {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 12px;
+      z-index: 100;
+    }
+
+    .icon-btn {
+      background: rgba(45, 18, 77, 0.8);
+      border: 1px solid var(--border-purple);
+      color: var(--lavender);
+      padding: 10px 18px;
+      border-radius: 50px;
+      backdrop-filter: blur(12px);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .icon-btn:hover {
+      background: var(--purple-primary);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--purple-glow);
+    }
+
+    .music-waves {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      height: 14px;
+    }
+
+    .music-waves span {
+      width: 3px;
+      height: 100%;
+      background-color: currentColor;
+      border-radius: 3px;
+      animation: soundWave 1.2s ease-in-out infinite alternate;
+    }
+
+    .music-waves span:nth-child(2) {
+      animation-delay: 0.2s;
+      height: 60%;
+    }
+
+    .music-waves span:nth-child(3) {
+      animation-delay: 0.4s;
+      height: 80%;
+    }
+
+    .music-waves span:nth-child(4) {
+      animation-delay: 0.1s;
+      height: 40%;
+    }
+
+    .music-paused .music-waves span {
+      animation: none;
+      height: 3px;
+    }
+
+    @keyframes soundWave {
+      0% {
+        height: 20%;
+      }
+
+      100% {
+        height: 100%;
+      }
+    }
+
+    /* Welcome / Lock Gate Screen */
+    #welcomeGate {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #2e1065 0%, #0a0412 80%);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 24px;
+      transition: opacity 0.8s ease, visibility 0.8s;
+    }
+
+    .gate-content {
+      max-width: 520px;
+      background: rgba(33, 13, 58, 0.7);
+      padding: 45px 35px;
+      border-radius: 32px;
+      border: 1px solid rgba(192, 132, 252, 0.35);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 50px rgba(168, 85, 247, 0.35);
+      animation: floatSmooth 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatSmooth {
+      0% {
+        transform: translateY(0px);
+      }
+
+      100% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .gate-avatar {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #d8b4fe, #9333ea, #6b21a8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      box-shadow: 0 0 30px rgba(192, 132, 252, 0.6);
+      border: 3px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .gate-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff, #e9d5ff, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+
+    .gate-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .btn-glow {
+      background: linear-gradient(135deg, #a855f7, #7e22ce);
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      padding: 16px 36px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(168, 85, 247, 0.5), 0 0 15px rgba(233, 213, 255, 0.4);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .btn-glow:hover {
+      transform: scale(1.06) translateY(-3px);
+      box-shadow: 0 15px 35px rgba(168, 85, 247, 0.7), 0 0 30px rgba(192, 132, 252, 0.8);
+      background: linear-gradient(135deg, #c084fc, #9333ea);
+    }
+
+    /* Main Container */
+    main {
+      position: relative;
+      z-index: 10;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 70px 20px 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 90px;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      text-align: center;
+      padding-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .age-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(168, 85, 247, 0.15);
+      border: 1px solid rgba(192, 132, 252, 0.4);
+      padding: 8px 22px;
+      border-radius: 50px;
+      color: var(--purple-lighter);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.8rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 15px;
+      letter-spacing: -1px;
+    }
+
+    .hero-title .gradient-text {
+      background: linear-gradient(135deg, #ffffff 10%, #f3e8ff 40%, #c084fc 70%, #f472b6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      text-shadow: 0 10px 30px rgba(168, 85, 247, 0.3);
+    }
+
+    .hero-title .name-highlight {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(3.2rem, 8vw, 6rem);
+      background: linear-gradient(135deg, #fef08a 0%, #f472b6 45%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: block;
+      margin-top: 5px;
+      filter: drop-shadow(0 0 15px rgba(244, 114, 182, 0.4));
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      max-width: 680px;
+      line-height: 1.7;
+      margin-bottom: 35px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-secondary {
+      background: rgba(45, 18, 77, 0.6);
+      border: 1px solid var(--border-purple);
+      color: var(--purple-lighter);
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(147, 51, 234, 0.3);
+      border-color: var(--purple-light);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* SECTION HEADERS */
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-badge {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--purple-light);
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      background: linear-gradient(to right, #fff, var(--purple-lighter));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* INTERACTIVE CAKE & CANDLE SECTION */
+    .cake-section {
+      padding: 50px 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cake-container {
+      position: relative;
+      width: 280px;
+      height: 240px;
+      margin: 40px 0 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    /* Cake Tiers */
+    .cake-plate {
+      width: 290px;
+      height: 16px;
+      background: linear-gradient(90deg, #9333ea, #c084fc, #9333ea);
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), 0 0 20px var(--purple-glow);
+    }
+
+    .cake-tier {
+      position: relative;
+      border-radius: 16px 16px 4px 4px;
+      box-shadow: inset 0 -6px 10px rgba(0, 0, 0, 0.3), inset 0 6px 10px rgba(255, 255, 255, 0.15);
+    }
+
+    .cake-tier.bottom {
+      width: 240px;
+      height: 75px;
+      background: linear-gradient(135deg, #581c87, #7e22ce);
+      border: 2px solid rgba(216, 180, 254, 0.3);
+    }
+
+    .cake-tier.bottom::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 16px;
+      background: radial-gradient(circle at 10px 0, #f3e8ff 10px, transparent 11px);
+      background-size: 20px 20px;
+    }
+
+    .cake-tier.middle {
+      width: 180px;
+      height: 65px;
+      background: linear-gradient(135deg, #6b21a8, #9333ea);
+      border: 2px solid rgba(216, 180, 254, 0.4);
+    }
+
+    .cake-tier.middle::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 14px;
+      background: radial-gradient(circle at 8px 0, #f3e8ff 8px, transparent 9px);
+      background-size: 16px 16px;
+    }
+
+    .cake-tier.top {
+      width: 120px;
+      height: 50px;
+      background: linear-gradient(135deg, #7e22ce, #a855f7);
+      border: 2px solid rgba(216, 180, 254, 0.5);
+    }
+
+    .cake-decorations {
+      position: absolute;
+      bottom: 25px;
+      display: flex;
+      gap: 15px;
+      font-size: 1.2rem;
+    }
+
+    /* Candle 21 */
+    .candle-holder {
+      position: absolute;
+      top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      z-index: 5;
+    }
+
+    .number-candle {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 0 10px #c084fc, 0 0 20px #9333ea;
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.2s ease;
+    }
+
+    .number-candle:hover {
+      transform: scale(1.1);
+    }
+
+    .flame {
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 24px;
+      background: linear-gradient(to top, #ea580c, #fbbf24, #fef08a);
+      border-radius: 50% 50% 20% 20%;
+      box-shadow: 0 0 20px #f59e0b, 0 0 40px #fbbf24, 0 0 60px #f43f5e;
+      animation: flicker 0.8s infinite alternate ease-in-out;
+      cursor: pointer;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .flame.extinguished {
+      opacity: 0 !important;
+      transform: translateX(-50%) scale(0.2) !important;
+      pointer-events: none;
+    }
+
+    .smoke {
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      width: 8px;
+      height: 8px;
+      background: rgba(220, 220, 255, 0.6);
+      border-radius: 50%;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .smoke.rising {
+      animation: riseSmoke 2s ease-out forwards;
+    }
+
+    @keyframes flicker {
+      0% {
+        transform: translateX(-50%) rotate(-2deg) scale(1);
+      }
+
+      100% {
+        transform: translateX(-50%) rotate(3deg) scale(1.1);
+      }
+    }
+
+    @keyframes riseSmoke {
+      0% {
+        opacity: 0.8;
+        transform: translateX(-50%) translateY(0) scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: translateX(-40%) translateY(-25px) scale(2.2);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateX(-60%) translateY(-50px) scale(3.5);
+      }
+    }
+
+    .cake-status-msg {
+      margin-top: 15px;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--purple-lighter);
+      text-align: center;
+      min-height: 30px;
+    }
+
+    .blow-instruction {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-top: 5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* HEARTFELT LETTER SECTION */
+    .letter-section {
+      padding: 50px 35px;
+    }
+
+    .envelope-wrapper {
+      max-width: 780px;
+      margin: 0 auto;
+      perspective: 1000px;
+    }
+
+    .letter-card {
+      background: linear-gradient(135deg, rgba(38, 14, 66, 0.85), rgba(22, 8, 40, 0.95));
+      border: 1px solid rgba(216, 180, 254, 0.3);
+      border-radius: 28px;
+      padding: 45px 35px;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+    }
+
+    .letter-stamp {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      width: 70px;
+      height: 80px;
+      border: 2px dashed rgba(192, 132, 252, 0.5);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--purple-light);
+      transform: rotate(6deg);
+      background: rgba(147, 51, 234, 0.1);
+    }
+
+    .letter-stamp span {
+      font-size: 1.4rem;
+      margin-bottom: 2px;
+    }
+
+    .letter-salutation {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      color: var(--accent-pink);
+      margin-bottom: 20px;
+    }
+
+    .letter-body {
+      font-size: 1.1rem;
+      line-height: 1.85;
+      color: #f1f5f9;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .letter-body p {
+      position: relative;
+      text-align: justify;
+    }
+
+    .letter-highlight {
+      color: #fef08a;
+      font-weight: 600;
+      text-shadow: 0 0 10px rgba(254, 240, 138, 0.3);
+    }
+
+    .letter-signature {
+      margin-top: 35px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px solid rgba(192, 132, 252, 0.2);
+      padding-top: 20px;
+    }
+
+    .signature-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: var(--purple-light);
+    }
+
+    /* 21 REASONS & BESTIE TRAITS */
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .reason-card {
+      background: rgba(30, 12, 52, 0.6);
+      border: 1px solid var(--border-purple);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reason-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--purple-primary), var(--accent-pink));
+      opacity: 0.6;
+      transition: width 0.3s ease, opacity 0.3s;
+    }
+
+    .reason-card:hover {
+      transform: translateY(-6px);
+      background: rgba(50, 18, 86, 0.85);
+      border-color: var(--purple-light);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(168, 85, 247, 0.3);
+    }
+
+    .reason-card:hover::before {
+      width: 8px;
+      opacity: 1;
+    }
+
+    .reason-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--purple-light);
+      opacity: 0.85;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .reason-icon {
+      font-size: 1.5rem;
+    }
+
+    .reason-title {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #fff;
+    }
+
+    .reason-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* POLAROID PHOTO GALLERY */
+    .polaroid-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      perspective: 1000px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .polaroid {
+      background: #ffffff;
+      color: #1e1b4b;
+      padding: 16px 16px 24px;
+      border-radius: 8px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 15px rgba(168, 85, 247, 0.2);
+      width: 270px;
+      transform: rotate(var(--rot, 0deg));
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .polaroid:nth-child(1) {
+      --rot: -3.5deg;
+    }
+
+    .polaroid:nth-child(2) {
+      --rot: 2.5deg;
+    }
+
+    .polaroid:nth-child(3) {
+      --rot: -2deg;
+    }
+
+    .polaroid:nth-child(4) {
+      --rot: 3deg;
+    }
+
+    .polaroid:nth-child(5) {
+      --rot: -2.5deg;
+    }
+
+    .polaroid:nth-child(6) {
+      --rot: 2deg;
+    }
+
+    .polaroid:hover {
+      transform: scale(1.08) rotate(0deg) translateY(-10px);
+      z-index: 10;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(192, 132, 252, 0.6);
+    }
+
+    .polaroid-pin {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 24px;
+      background: radial-gradient(circle at 30% 30%, #f472b6, #db2777);
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      z-index: 2;
+    }
+
+    .polaroid-img-wrapper {
+      width: 100%;
+      height: 220px;
+      border-radius: 4px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #e9d5ff, #c084fc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .polaroid-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .polaroid-change-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(59, 7, 100, 0.65);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      gap: 6px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 4px;
+      backdrop-filter: blur(2px);
+      pointer-events: none;
+    }
+
+    .polaroid:hover .polaroid-change-overlay {
+      opacity: 1;
+    }
+
+    .polaroid-caption {
+      margin-top: 16px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.5rem;
+      text-align: center;
+      color: #3b0764;
+      font-weight: 700;
+    }
+
+    .polaroid-tag {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.75rem;
+      color: #7e22ce;
+      text-align: center;
+      margin-top: 2px;
+      font-weight: 600;
+    }
+
+    /* Photo Upload Button */
+    .photo-upload-bar {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .upload-btn-label {
+      background: rgba(147, 51, 234, 0.2);
+      border: 1px dashed var(--purple-light);
+      color: var(--purple-lighter);
+      padding: 12px 26px;
+      border-radius: 50px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    .upload-btn-label:hover {
+      background: rgba(147, 51, 234, 0.45);
+      color: #fff;
+      border-color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(168, 85, 247, 0.35);
+    }
+
+    /* WISH LANTERNS SECTION */
+    .wish-section {
+      padding: 45px 35px;
+      text-align: center;
+    }
+
+    .wish-form {
+      max-width: 600px;
+      margin: 25px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .wish-input {
+      width: 100%;
+      padding: 18px 24px;
+      background: rgba(23, 9, 41, 0.8);
+      border: 1px solid var(--border-purple);
+      border-radius: 18px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 1.05rem;
+      outline: none;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .wish-input:focus {
+      border-color: var(--purple-light);
+      box-shadow: 0 0 20px var(--purple-glow);
+      background: rgba(35, 12, 64, 0.9);
+    }
+
+    .wish-input::placeholder {
+      color: rgba(216, 180, 254, 0.5);
+    }
+
+    .wishes-board {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      max-width: 850px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .wish-chip {
+      background: rgba(45, 18, 77, 0.6);
+      border: 1px solid rgba(192, 132, 252, 0.3);
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      color: var(--purple-lighter);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      animation: fadeInScale 0.4s ease;
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Floating Lanterns Animation */
+    .floating-lantern {
+      position: fixed;
+      bottom: -80px;
+      width: 50px;
+      height: 70px;
+      background: radial-gradient(circle at 50% 80%, #fbbf24 0%, #a855f7 65%, #6b21a8 100%);
+      border-radius: 16px 16px 8px 8px;
+      box-shadow: 0 0 25px #fbbf24, 0 0 50px #9333ea;
+      pointer-events: none;
+      z-index: 5;
+      animation: flyUpward 10s linear forwards;
+    }
+
+    .floating-lantern::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 8px;
+      background: #fef08a;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #fef08a;
+    }
+
+    @keyframes flyUpward {
+      0% {
+        transform: translateY(0) rotate(0deg) scale(0.8);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0.95;
+      }
+
+      90% {
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: translateY(-120vh) rotate(15deg) scale(0.4);
+        opacity: 0;
+      }
+    }
+
+    /* MODAL POPUPS */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 2, 18, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      background: linear-gradient(135deg, #2b104d, #160829);
+      border: 1px solid var(--border-glow);
+      border-radius: 30px;
+      padding: 40px 30px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      transform: scale(0.85) translateY(20px);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(168, 85, 247, 0.4);
+    }
+
+    .modal-overlay.active .modal-box {
+      transform: scale(1) translateY(0);
+    }
+
+    .modal-icon {
+      font-size: 4rem;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .modal-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .modal-text {
+      color: var(--purple-lighter);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .modal-close-btn:hover {
+      background: var(--purple-primary);
+      transform: rotate(90deg);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 60px 20px 40px;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(192, 132, 252, 0.15);
+      position: relative;
+      z-index: 10;
+    }
+
+    .footer-heart {
+      color: var(--accent-pink);
+      display: inline-block;
+      animation: heartbeat 1.5s infinite;
+    }
+
+    @keyframes heartbeat {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.25);
+      }
+    }
+
+    /* RESPONSIVE STYLES */
+    @media (max-width: 768px) {
+      main {
+        padding: 50px 15px 80px;
+        gap: 60px;
+      }
+
+      .control-bar {
+        top: 12px;
+        right: 12px;
+      }
+
+      .icon-btn span.btn-label {
+        display: none;
+      }
+
+      .cake-container {
+        transform: scale(0.9);
+      }
+
+      .letter-card {
+        padding: 30px 20px;
+      }
+
+      .letter-salutation {
+        font-size: 2rem;
+      }
+
+      .letter-body {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Ambient Light Mesh Background -->
+  <div class="bg-gradient-mesh"></div>
+
+  <!-- Interactive Background Canvas (Stars & Sparkles) -->
+  <canvas id="particlesCanvas"></canvas>
+
+  <!-- Floating Audio & Confetti Controls -->
+  <div class="control-bar">
+    <button class="icon-btn" id="confettiBtn" title="Tembakkan Konfeti">
+      <span>🎉</span>
+      <span class="btn-label">Tembak Konfeti</span>
+    </button>
+    <button class="icon-btn music-paused" id="musicBtn" title="Putar Lagu Ulang Tahun">
+      <span class="music-waves">
+        <span></span><span></span><span></span><span></span>
+      </span>
+      <span class="btn-label" id="musicLabel">Musik: Mati</span>
+    </button>
+  </div>
+
+  <!-- Welcome / Envelope Gate Screen -->
+  <div id="welcomeGate">
+    <div class="gate-content">
+      <div class="gate-avatar">👑</div>
+      <div class="age-badge">Special Delivery for Bestie</div>
+      <h1 class="gate-title">Hai, Siti Maefaulan! 💜</h1>
+      <p class="gate-desc">
+        Hari ini adalah hari yang paling ditunggu-tunggu. Hari di mana seseorang yang sangat berharga menginjak usia
+        yang ke-21 tahun! ✨
+      </p>
+      <button class="btn-glow" id="openSurpriseBtn">
+        <span>Buka Kejutan Spesial</span>
+        <span>✨</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Website Content -->
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div class="age-badge">🎉 Happy 21st Birthday Milestone</div>
+      <h1 class="hero-title">
+        <span class="gradient-text">Selamat Ulang Tahun Ke-21,</span>
+        <span class="name-highlight">Siti Maefaulan</span>
+      </h1>
+      <p class="hero-subtitle">
+        Selamat menyambut usia 21, bestie tersayang! Semoga bab baru dalam hidupmu dipenuhi dengan kebahagiaan tanpa
+        akhir, mimpi-mimpi yang menjadi kenyataan, tawa riang di setiap langkah, dan ketenangan hati. 💜🌸
+      </p>
+      <div class="hero-actions">
+        <button class="btn-glow" onclick="scrollToSection('cakeSection')">
+          <span>🎂 Tiup Lilin Ke-21</span>
+        </button>
+        <button class="btn-secondary" onclick="scrollToSection('letterSection')">
+          <span>💌 Baca Surat Bestie</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE CAKE SECTION -->
+    <section class="glass-card cake-section" id="cakeSection">
+      <div class="section-header">
+        <span class="section-badge">Make A Wish Ceremony</span>
+        <h2 class="section-title">Kue Ulang Tahun Virtual</h2>
+        <p class="section-desc">Pikirkan satu permohonan terbaik di usia 21 tahunmu, lalu sentuh atau klik lilin angka
+          21 di bawah ini untuk meniupnya!</p>
+      </div>
+
+      <div class="cake-container">
+        <!-- Number 21 Candle with Flame -->
+        <div class="candle-holder" id="candleHolder">
+          <div class="number-candle" id="candle2" title="Klik untuk tiup lilin!">
+            2
+            <div class="flame" id="flame1"></div>
+            <div class="smoke" id="smoke1"></div>
+          </div>
+          <div class="number-candle" id="candle1" title="Klik untuk tiup lilin!">
+            1
+            <div class="flame" id="flame2"></div>
+            <div class="smoke" id="smoke2"></div>
+          </div>
+        </div>
+
+        <!-- 3-Tier Purple Cake -->
+        <div class="cake-tier top"></div>
+        <div class="cake-tier middle"></div>
+        <div class="cake-tier bottom"></div>
+        <div class="cake-plate"></div>
+      </div>
+
+      <div class="cake-status-msg" id="cakeStatus">
+        🔥 Lilin menyala... Pikirkan doa terindahmu lalu tiup lilinnya!
+      </div>
+      <div class="blow-instruction" id="blowInstruction">
+        <span>💡 Tips: Klik angka lilin 21 atau tombol di bawah</span>
+      </div>
+
+      <div style="margin-top: 25px;">
+        <button class="btn-glow" id="blowCandleBtn">
+          <span>💨 Tiup Lilin Sekarang!</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- HEARTFELT LETTER SECTION -->
+    <section class="letter-section" id="letterSection">
+      <div class="section-header">
+        <span class="section-badge">From The Deepest Heart</span>
+        <h2 class="section-title">Surat Spesial Untuk Siti</h2>
+        <p class="section-desc">Ditulis dengan penuh ketulusan untuk seorang sahabat luar biasa yang kini genap berusia
+          21 tahun.</p>
+      </div>
+
+      <div class="envelope-wrapper">
+        <div class="letter-card">
+          <div class="letter-stamp">
+            <span>👑</span>
+            <b>BESTIE</b>
+          </div>
+
+          <div class="letter-salutation">
+            Dear Siti Maefaulan,
+          </div>
+
+          <div class="letter-body">
+            <p>
+              Selamat ulang tahun yang ke-21 ya, Siti! 🎉 Rasanya baru kemarin kita bercerita tentang hal-hal kecil,
+              tertawa lepas sampai perut sakit, dan saling menguatkan saat hari-hari terasa berat. Sekarang, kamu sudah
+              resmi melangkah ke fase kedewasaan di umur 21 tahun.
+            </p>
+            <p>
+              Terima kasih sudah menjadi sahabat yang <span class="letter-highlight">selalu tulus, pendengar yang luar
+                biasa, dan tempat berbagi yang begitu nyaman</span>. Kamu adalah sosok yang kuat, baik hati, dan selalu
+              membawa energi positif serta kehangatan bagi orang-orang di sekitarmu.
+            </p>
+            <p>
+              Di usia 21 ini, aku berdoa semoga setiap langkah yang kamu ambil selalu dimudahkan. Semoga kuliah, karier,
+              dan semua impian besarmu dilancarkan oleh Tuhan. Jangan pernah meragukan kemampuan dirimu sendiri ya,
+              karena kamu jauh lebih hebat dan berharga dari yang kamu bayangkan.
+            </p>
+            <p>
+              Tetaplah menjadi Siti yang ceria, penuh senyum manis, dan berhati lembut. Apapun rintangan yang ada di
+              depan, ingat kalau kamu selalu punya bestie yang siap mendukung dan ada di sampingmu. 💜
+            </p>
+          </div>
+
+          <div class="letter-signature">
+            <div>
+              <small style="color: var(--text-muted); display: block;">Selalu ada untukmu,</small>
+              <div class="signature-text">Sahabat Terbaikmu 💜</div>
+            </div>
+            <button class="icon-btn" onclick="copyBestieLetter()">
+              <span>📋</span>
+              <span>Salin Ucapan</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 21 REASONS WHY SITI IS THE BEST -->
+    <section class="glass-card" style="padding: 50px 30px;" id="reasonsSection">
+      <div class="section-header">
+        <span class="section-badge">21 Special Things</span>
+        <h2 class="section-title">21 Hal Mengapa Kamu Bestie Terbaik! 👑</h2>
+        <p class="section-desc">21 alasan manis, lucu, dan berharga kenapa dunia ini jauh lebih indah dengan adanya Siti
+          Maefaulan.</p>
+      </div>
+
+      <div class="reasons-grid" id="reasonsGrid">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </section>
+
+    <!-- BESTIE PHOTO POLAROID WALL -->
+    <section id="polaroidSection">
+      <div class="section-header">
+        <span class="section-badge">Sweet Memories</span>
+        <h2 class="section-title">Galeri Polaroid Kenangan 📸</h2>
+        <p class="section-desc">Momen-momen manis yang tak terlupakan. Kamu juga bisa mengunggah fotomu bersama Siti
+          agar lebih berkesan!</p>
+      </div>
+
+      <div class="polaroid-gallery" id="polaroidGallery">
+        <!-- Bingkai 1 -->
+        <div class="polaroid" onclick="triggerSlotUpload(0)" title="Klik untuk mengganti foto ini">
+          <div class="polaroid-pin"></div>
+          <div class="polaroid-img-wrapper">
+            <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#7e22ce" stroke-width="1.5">
+              <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                fill="#f3e8ff" />
+            </svg>
+            <div class="polaroid-change-overlay">
+              <span>📷 Klik Ganti Foto</span>
+            </div>
+          </div>
+          <div class="polaroid-caption">Bestie Forever 💜</div>
+          <div class="polaroid-tag">#FriendshipGoals</div>
+        </div>
+
+        <!-- Bingkai 2 -->
+        <div class="polaroid" onclick="triggerSlotUpload(1)" title="Klik untuk mengganti foto ini">
+          <div class="polaroid-pin"></div>
+          <div class="polaroid-img-wrapper">
+            <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#7e22ce" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10" fill="#f3e8ff" />
+              <path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="#7e22ce" stroke-width="2" stroke-linecap="round" />
+              <line x1="9" y1="9" x2="9.01" y2="9" stroke="#7e22ce" stroke-width="3" stroke-linecap="round" />
+              <line x1="15" y1="9" x2="15.01" y2="9" stroke="#7e22ce" stroke-width="3" stroke-linecap="round" />
+            </svg>
+            <div class="polaroid-change-overlay">
+              <span>📷 Klik Ganti Foto</span>
+            </div>
+          </div>
+          <div class="polaroid-caption">Senyum Manis Siti ✨</div>
+          <div class="polaroid-tag">#AlwaysSmiling</div>
+        </div>
+
+        <!-- Bingkai 3 -->
+        <div class="polaroid" onclick="triggerSlotUpload(2)" title="Klik untuk mengganti foto ini">
+          <div class="polaroid-pin"></div>
+          <div class="polaroid-img-wrapper">
+            <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#7e22ce" stroke-width="1.5">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                fill="#fef08a" stroke="#d97706" />
+            </svg>
+            <div class="polaroid-change-overlay">
+              <span>📷 Klik Ganti Foto</span>
+            </div>
+          </div>
+          <div class="polaroid-caption">Officially 21 & Fab! 👑</div>
+          <div class="polaroid-tag">#Chapter21</div>
+        </div>
+
+        <!-- Bingkai 4 -->
+        <div class="polaroid" onclick="triggerSlotUpload(3)" title="Klik untuk mengganti foto ini">
+          <div class="polaroid-pin"></div>
+          <div class="polaroid-img-wrapper">
+            <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#7e22ce" stroke-width="1.5">
+              <rect x="3" y="8" width="18" height="13" rx="2" fill="#f3e8ff" stroke="#7e22ce" />
+              <path d="M16 8V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v3" stroke="#7e22ce" stroke-width="2" />
+            </svg>
+            <div class="polaroid-change-overlay">
+              <span>📷 Klik Ganti Foto</span>
+            </div>
+          </div>
+          <div class="polaroid-caption">Partner Curhat & Nongki ☕</div>
+          <div class="polaroid-tag">#HappyMoments</div>
+        </div>
+
+        <!-- Bingkai 5 -->
+        <div class="polaroid" onclick="triggerSlotUpload(4)" title="Klik untuk mengganti foto ini">
+          <div class="polaroid-pin"></div>
+          <div class="polaroid-img-wrapper">
+            <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#7e22ce" stroke-width="1.5">
+              <circle cx="12" cy="12" r="3.5" fill="#fbcfe8" stroke="#db2777" stroke-width="1.5" />
+              <circle cx="12" cy="5.5" r="3" fill="#f5d0fe" stroke="#a855f7" stroke-width="1.5" />
+              <circle cx="12" cy="18.5" r="3" fill="#f5d0fe" stroke="#a855f7" stroke-width="1.5" />
+              <circle cx="5.5" cy="12" r="3" fill="#f5d0fe" stroke="#a855f7" stroke-width="1.5" />
+              <circle cx="18.5" cy="12" r="3" fill="#f5d0fe" stroke="#a855f7" stroke-width="1.5" />
+            </svg>
+            <div class="polaroid-change-overlay">
+              <span>📷 Klik Ganti Foto</span>
+            </div>
+          </div>
+          <div class="polaroid-caption">Momen Paling Berkesan 🌸</div>
+          <div class="polaroid-tag">#SweetMemories</div>
+        </div>
+
+        <!-- Bingkai 6 -->
+        <div class="polaroid" onclick="triggerSlotUpload(5)" title="Klik untuk mengganti foto ini">
+          <div class="polaroid-pin"></div>
+          <div class="polaroid-img-wrapper">
+            <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#7e22ce" stroke-width="1.5">
+              <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" fill="#f3e8ff"
+                stroke="#7e22ce" stroke-width="1.5" />
+              <circle cx="12" cy="13" r="4" fill="#e9d5ff" stroke="#7e22ce" stroke-width="1.5" />
+            </svg>
+            <div class="polaroid-change-overlay">
+              <span>📷 Klik Ganti Foto</span>
+            </div>
+          </div>
+          <div class="polaroid-caption">Sahabat Sejati Selamanya 💖</div>
+          <div class="polaroid-tag">#BestFriends21</div>
+        </div>
+      </div>
+
+      <div class="photo-upload-bar">
+        <button type="button" class="upload-btn-label" onclick="handleMainUploadClick()">
+          <span>📷 Ganti atau Tambah Foto Asli Siti (Maks. 6 Bingkai)</span>
+        </button>
+        <input type="file" id="photoInput" accept="image/*" style="display: none;" onchange="handlePhotoUpload(event)">
+        <p style="margin-top: 10px; font-size: 0.85rem; color: var(--purple-lighter); opacity: 0.85;">
+          💡 Tip: Kamu juga bisa klik langsung pada salah satu dari 6 bingkai di atas untuk memilih foto yang ingin
+          diganti!
+        </p>
+      </div>
+    </section>
+
+    <!-- WISH & RELEASE LANTERNS -->
+    <section class="glass-card wish-section" id="lanternSection">
+      <div class="section-header">
+        <span class="section-badge">Sky Lanterns</span>
+        <h2 class="section-title">Terbangkan Lentera Harapan 🏮</h2>
+        <p class="section-desc">Tuliskan doa atau permohonan tulusmu untuk Siti, lalu terbangkan ke angkasa malam yang
+          penuh bintang!</p>
+      </div>
+
+      <form class="wish-form" onsubmit="releaseLantern(event)">
+        <input type="text" id="wishInput" class="wish-input"
+          placeholder="Tuliskan harapanmu (contoh: Sehat selalu, makin sukses, rezeki melimpah)..." required>
+        <button type="submit" class="btn-glow" style="justify-content: center;">
+          <span>🏮 Terbangkan Lentera Harapan</span>
+        </button>
+      </form>
+
+      <div class="wishes-board" id="wishesBoard">
+        <div class="wish-chip">✨ Semoga lancar segala urusan & kuliahnya!</div>
+        <div class="wish-chip">💜 Bahagia terus dan makin glow up!</div>
+        <div class="wish-chip">🌸 Selalu dikelilingi orang-orang baik!</div>
+        <div class="wish-chip">💰 Rezeki melimpah dan impian tercapai!</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL FOR GIFTS & CELEBRATIONS -->
+  <div class="modal-overlay" id="customModal">
+    <div class="modal-box">
+      <button class="modal-close-btn" onclick="closeModal()">✕</button>
+      <div class="modal-icon" id="modalIcon">🎉</div>
+      <h3 class="modal-title" id="modalTitle">Kejutan Terbuka!</h3>
+      <p class="modal-text" id="modalBody">Isi kejutan di sini...</p>
+      <button class="btn-glow" onclick="closeModal()" style="padding: 12px 30px;">
+        <span>Tutup & Peluk Bestie 💜</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Dibuat khusus dengan penuh kasih sayang <span class="footer-heart">💜</span> untuk <strong>Siti
+        Maefaulan</strong> yang ke-21.</p>
+    <p style="margin-top: 8px; font-size: 0.85rem; opacity: 0.7;">Best Friends Forever (camelia cantik)</p>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // -------------------------------------------------------------
+    // 1. PARTICLES & FLOATING STARS BACKGROUND CANVAS
+    // -------------------------------------------------------------
+    const canvas = document.getElementById('particlesCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2.8 + 0.8;
+        this.speedX = (Math.random() - 0.5) * 0.4;
+        this.speedY = -(Math.random() * 0.5 + 0.2);
+        this.alpha = Math.random() * 0.8 + 0.2;
+        this.color = Math.random() > 0.3 ? '#c084fc' : (Math.random() > 0.5 ? '#f472b6' : '#fef08a');
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.y < -10 || this.x < -10 || this.x > canvas.width + 10) {
+          this.y = canvas.height + 10;
+          this.x = Math.random() * canvas.width;
+        }
+      }
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.fillStyle = this.color;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    for (let i = 0; i < 60; i++) {
+      particles.push(new Particle());
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // -------------------------------------------------------------
+    // 2. SYNTHESIZED WEB AUDIO (Calm Birthday Music + Sound Effects)
+    // -------------------------------------------------------------
+    let audioCtx = null;
+    let isMusicPlaying = false;
+    let melodyTimeout = null;
+
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    // Melodic Note frequencies for Happy Birthday Tune
+    const NOTE = {
+      C4: 261.63, D4: 293.66, E4: 329.63, F4: 349.23, G4: 392.00,
+      A4: 440.00, B4: 493.88, C5: 523.25, D5: 587.33, E5: 659.25,
+      F5: 698.46, G5: 783.99, A5: 880.00, Bb4: 466.16
+    };
+
+    const happyBirthdayScore = [
+      { note: NOTE.C4, dur: 350 }, { note: NOTE.C4, dur: 250 }, { note: NOTE.D4, dur: 500 }, { note: NOTE.C4, dur: 500 },
+      { note: NOTE.F4, dur: 500 }, { note: NOTE.E4, dur: 900 },
+      { note: NOTE.C4, dur: 350 }, { note: NOTE.C4, dur: 250 }, { note: NOTE.D4, dur: 500 }, { note: NOTE.C4, dur: 500 },
+      { note: NOTE.G4, dur: 500 }, { note: NOTE.F4, dur: 900 },
+      { note: NOTE.C4, dur: 350 }, { note: NOTE.C4, dur: 250 }, { note: NOTE.C5, dur: 500 }, { note: NOTE.A4, dur: 500 },
+      { note: NOTE.F4, dur: 450 }, { note: NOTE.E4, dur: 450 }, { note: NOTE.D4, dur: 800 },
+      { note: NOTE.Bb4, dur: 350 }, { note: NOTE.Bb4, dur: 250 }, { note: NOTE.A4, dur: 500 }, { note: NOTE.F4, dur: 500 },
+      { note: NOTE.G4, dur: 500 }, { note: NOTE.F4, dur: 1200 }
+    ];
+
+    function playTone(freq, duration, type = 'sine', volume = 0.12) {
+      if (!audioCtx) return;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+      gain.gain.setValueAtTime(0, audioCtx.currentTime);
+      gain.gain.linearRampToValueAtTime(volume, audioCtx.currentTime + 0.05);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + (duration / 1000));
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start();
+      osc.stop(audioCtx.currentTime + (duration / 1000));
+    }
+
+    function playMelodyStep(index) {
+      if (!isMusicPlaying) return;
+      if (index >= happyBirthdayScore.length) {
+        melodyTimeout = setTimeout(() => playMelodyStep(0), 1500);
+        return;
+      }
+      const item = happyBirthdayScore[index];
+      playTone(item.note, item.dur, 'triangle', 0.15);
+      // Add subtle harmonic octave for dreaminess
+      playTone(item.note * 0.5, item.dur, 'sine', 0.08);
+
+      melodyTimeout = setTimeout(() => {
+        playMelodyStep(index + 1);
+      }, item.dur + 70);
+    }
+
+    function toggleMusic() {
+      initAudio();
+      isMusicPlaying = !isMusicPlaying;
+      const btn = document.getElementById('musicBtn');
+      const label = document.getElementById('musicLabel');
+
+      if (isMusicPlaying) {
+        btn.classList.remove('music-paused');
+        label.innerText = 'Musik: Hidup';
+        playMelodyStep(0);
+      } else {
+        btn.classList.add('music-paused');
+        label.innerText = 'Musik: Mati';
+        if (melodyTimeout) clearTimeout(melodyTimeout);
+      }
+    }
+    document.getElementById('musicBtn').addEventListener('click', toggleMusic);
+
+    // Sound effect: Extinguish candle (soft wind puff)
+    function playBlowSound() {
+      if (!audioCtx) initAudio();
+      if (!audioCtx) return;
+
+      const bufferSize = audioCtx.sampleRate * 0.5;
+      const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+      const output = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        output[i] = Math.random() * 2 - 1;
+      }
+
+      const whiteNoise = audioCtx.createBufferSource();
+      whiteNoise.buffer = buffer;
+
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(800, audioCtx.currentTime);
+      filter.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.4);
+
+      const gain = audioCtx.createGain();
+      gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.45);
+
+      whiteNoise.connect(filter);
+      filter.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      whiteNoise.start();
+    }
+
+    // Sound effect: Magic Chime / Sparkle
+    function playChimeSound() {
+      initAudio();
+      const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51];
+      notes.forEach((freq, idx) => {
+        setTimeout(() => {
+          playTone(freq, 400, 'sine', 0.15);
+        }, idx * 80);
+      });
+    }
+
+    // -------------------------------------------------------------
+    // 3. CONFETTI CANNON
+    // -------------------------------------------------------------
+    function fireConfetti(x = 0.5, y = 0.6) {
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 80,
+          spread: 80,
+          origin: { x: x, y: y },
+          colors: ['#a855f7', '#c084fc', '#f472b6', '#fef08a', '#ffffff', '#e9d5ff'],
+          shapes: ['circle', 'square']
+        });
+      }
+    }
+
+    document.getElementById('confettiBtn').addEventListener('click', (e) => {
+      const rect = e.target.getBoundingClientRect();
+      fireConfetti(rect.left / window.innerWidth, rect.top / window.innerHeight);
+      playChimeSound();
+    });
+
+    // -------------------------------------------------------------
+    // 4. WELCOME GATE UNLOCK
+    // -------------------------------------------------------------
+    document.getElementById('openSurpriseBtn').addEventListener('click', () => {
+      initAudio();
+      toggleMusic(); // Start sweet music automatically upon entering
+      fireConfetti(0.5, 0.5);
+
+      const gate = document.getElementById('welcomeGate');
+      gate.style.opacity = '0';
+      setTimeout(() => {
+        gate.style.display = 'none';
+      }, 800);
+    });
+
+    // Smooth Scroll Helper
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // -------------------------------------------------------------
+    // 5. CANDLE BLOWING INTERACTION
+    // -------------------------------------------------------------
+    let candleBlown = false;
+
+    function blowCandle() {
+      if (candleBlown) {
+        // Relight candle if clicked again!
+        candleBlown = false;
+        document.getElementById('flame1').classList.remove('extinguished');
+        document.getElementById('flame2').classList.remove('extinguished');
+        document.getElementById('cakeStatus').innerHTML = '🔥 Lilin kembali menyala! Buat permohonan baru yuk!';
+        document.getElementById('blowCandleBtn').innerHTML = '<span>💨 Tiup Lilin Lagi</span>';
+        playChimeSound();
+        return;
+      }
+
+      candleBlown = true;
+      playBlowSound();
+
+      // Flame extinguish animation
+      document.getElementById('flame1').classList.add('extinguished');
+      document.getElementById('flame2').classList.add('extinguished');
+
+      // Smoke rise
+      const s1 = document.getElementById('smoke1');
+      const s2 = document.getElementById('smoke2');
+      s1.classList.remove('rising');
+      s2.classList.remove('rising');
+      void s1.offsetWidth; // reflow
+      s1.classList.add('rising');
+      s2.classList.add('rising');
+
+      document.getElementById('cakeStatus').innerHTML = '✨ <b>Horeee! Permohonanmu telah dikirim ke langit!</b> Semoga semua doa Siti terkabul! 💜🎂';
+      document.getElementById('blowCandleBtn').innerHTML = '<span>🕯️ Nyalakan Lilin Kembali</span>';
+
+      // Massive Confetti Explosion
+      setTimeout(() => {
+        fireConfetti(0.5, 0.4);
+        setTimeout(() => fireConfetti(0.3, 0.5), 250);
+        setTimeout(() => fireConfetti(0.7, 0.5), 500);
+        playChimeSound();
+      }, 400);
+
+      // Open Celebration Modal
+      setTimeout(() => {
+        showModal(
+          '🎂',
+          'Make A Wish Sukses!',
+          'Selamat menginjak usia 21 tahun, Siti Maefaulan! Lilin harapan sudah ditiup. Semoga kesehatan, kebahagiaan sejati, dan impian terbesarmu di tahun ini terwujud dengan cara yang paling indah! 💜✨'
+        );
+      }, 1000);
+    }
+
+    document.getElementById('blowCandleBtn').addEventListener('click', blowCandle);
+    document.getElementById('candle1').addEventListener('click', blowCandle);
+    document.getElementById('candle2').addEventListener('click', blowCandle);
+
+    // -------------------------------------------------------------
+    // 6. 21 REASONS GENERATION
+    // -------------------------------------------------------------
+    const reasons = [
+      { num: '01', icon: '🌟', title: 'Senyum yang Menular', desc: 'Senyummu selalu berhasil mencairkan suasana dan bikin siapa pun di dekatmu ikut tersenyum.' },
+      { num: '02', icon: '🎧', title: 'Pendengar Terbaik', desc: 'Selalu sabar mendengarkan setiap keluh kesah, cerita absurd, dan cerita senang tanpa menghakimi.' },
+      { num: '03', icon: '💪', title: 'Pribadi yang Tangguh', desc: 'Kamu adalah pejuang sejati. Sesulit apa pun harimu, kamu selalu bangkit dengan kepala tegak.' },
+      { num: '04', icon: '🌸', title: 'Hati yang Tulus & Lembut', desc: 'Kebaikan hatimu sangat terasa. Kamu tulus menyayangi sahabat dan orang-orang di sekitarmu.' },
+      { num: '05', icon: '🤣', title: 'Selera Humor yang Klop', desc: 'Kita bisa ketawa ngakak sampai nangis cuma karena hal sepele yang orang lain gak ngerti.' },
+      { num: '06', icon: '🍕', title: 'Partner Kuliner Terbaik', desc: 'Gak pernah nolak diajak cari jajan, kulineran malam, atau berburu makanan viral.' },
+      { num: '07', icon: '💖', title: 'Setia Kawan Tanpa Syarat', desc: 'Selalu ada di saat senang maupun sulit. Teman sejati yang sangat langka dan berharga.' },
+      { num: '08', icon: '👑', title: 'Aura Positif yang Kuat', desc: 'Kehadiranmu selalu membawa rasa aman, nyaman, dan energi penuh semangat.' },
+      { num: '09', icon: '☕', title: 'Teman Deep Talk Terbaik', desc: 'Bisa ngobrol dari obrolan remeh sampai masa depan dan filosofi hidup hingga larut malam.' },
+      { num: '10', icon: '🎯', title: 'Punya Tekad yang Kuat', desc: 'Kalau sudah punya tujuan atau impian, kamu selalu berusaha sepenuh hati untuk mencapainya.' },
+      { num: '11', icon: '✨', title: 'Glow Up Luar & Dalam', desc: 'Di umur 21 ini, kamu makin dewasa, makin bijak, dan makin memesona luar dalam!' },
+      { num: '12', icon: '🧸', title: 'Pemberi Kenyamanan', desc: 'Rasanya selalu bisa jadi diri sendiri tanpa pura-pura kalau lagi bareng kamu.' },
+      { num: '13', icon: '📱', title: 'Spam Chat & Meme Asyik', desc: 'Selalu punya stok meme dan kabar seru yang bikin hari-hari biasa jadi berwarna.' },
+      { num: '14', icon: '👗', title: 'Selalu Modis & Elegan', desc: 'Punya gaya khas yang selalu pas dan manis di setiap kesempatan.' },
+      { num: '15', icon: '🎁', title: 'Penuh Perhatian Kecil', desc: 'Selalu ingat hal-hal kecil yang berarti dan selalu menghargai orang lain.' },
+      { num: '16', icon: '🧘‍♀️', title: 'Bisa Bikin Hati Tenang', desc: 'Nasihat dan kalimat penenang darimu selalu pas di saat pikiran lagi kacau.' },
+      { num: '17', icon: '📚', title: 'Cerdas dan Berwawasan', desc: 'Selalu seru diajak diskusi dan punya sudut pandang yang inspiratif.' },
+      { num: '18', icon: '🌺', title: 'Karakter yang Rendah Hati', desc: 'Meskipun punya banyak kelebihan, kamu tetap rendah hati dan bersahaja.' },
+      { num: '19', icon: '🌈', title: 'Pelangi di Hari Mendung', desc: 'Bisa mengubah hari yang suntuk jadi penuh canda dan harapan.' },
+      { num: '20', icon: '🤝', title: 'Bisa Dipercaya 100%', desc: 'Rahasia aman, janji selalu dipegang. Sahabat dengan integritas tinggi!' },
+      { num: '21', icon: '🔮', title: 'You are One in a Million!', desc: 'Karena kamu adalah Siti Maefaulan yang unik, tak tergantikan, dan sangat dicintai!' }
+    ];
+
+    const reasonsGrid = document.getElementById('reasonsGrid');
+    reasons.forEach(r => {
+      const card = document.createElement('div');
+      card.className = 'reason-card';
+      card.innerHTML = `
+        <div class="reason-num">
+          <span>#${r.num}</span>
+          <span class="reason-icon">${r.icon}</span>
+        </div>
+        <div class="reason-title">${r.title}</div>
+        <div class="reason-desc">${r.desc}</div>
+      `;
+      card.addEventListener('click', () => {
+        playTone(587.33, 180, 'sine', 0.1);
+        fireConfetti(0.5, 0.6);
+      });
+      reasonsGrid.appendChild(card);
+    });
+
+    // -------------------------------------------------------------
+    // 7. POLAROID REAL PHOTO UPLOAD (FIXED 6 FRAMES ONLY)
+    // -------------------------------------------------------------
+    let targetSlotIndex = null;
+    let lastFilledIndex = -1;
+
+    function triggerSlotUpload(slotIdx) {
+      targetSlotIndex = slotIdx;
+      const input = document.getElementById('photoInput');
+      input.value = '';
+      input.click();
+    }
+
+    function handleMainUploadClick() {
+      const slots = document.querySelectorAll('.polaroid-gallery .polaroid');
+      if (!slots || slots.length === 0) return;
+
+      let nextSlot = -1;
+      // Cari bingkai pertama yang belum diisi foto asli
+      for (let i = 0; i < slots.length; i++) {
+        if (!slots[i].classList.contains('photo-filled')) {
+          nextSlot = i;
+          break;
+        }
+      }
+
+      // Jika 6 bingkai sudah terisi semua, ganti bingkai berikutnya secara bergiliran tanpa menambah bingkai
+      if (nextSlot === -1) {
+        lastFilledIndex = (lastFilledIndex + 1) % slots.length;
+        nextSlot = lastFilledIndex;
+      }
+
+      triggerSlotUpload(nextSlot);
+    }
+
+    function processImageFile(file, maxWidth, callback) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const img = new Image();
+        img.onload = function () {
+          let w = img.width;
+          let h = img.height;
+          if (w > maxWidth || h > maxWidth) {
+            if (w > h) {
+              h = Math.round((h * maxWidth) / w);
+              w = maxWidth;
+            } else {
+              w = Math.round((w * maxWidth) / h);
+              h = maxWidth;
+            }
+          }
+          const canvas = document.createElement('canvas');
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, w, h);
+          const dataUrl = canvas.toDataURL('image/jpeg', 0.88);
+          callback(dataUrl);
+        };
+        img.onerror = function () {
+          callback(e.target.result);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function handlePhotoUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      processImageFile(file, 800, function (dataUrl) {
+        const slots = document.querySelectorAll('.polaroid-gallery .polaroid');
+        if (!slots || slots.length === 0) return;
+
+        let slotIdx = targetSlotIndex;
+        if (slotIdx === null || slotIdx < 0 || slotIdx >= slots.length) {
+          let found = -1;
+          for (let i = 0; i < slots.length; i++) {
+            if (!slots[i].classList.contains('photo-filled')) {
+              found = i;
+              break;
+            }
+          }
+          if (found !== -1) {
+            slotIdx = found;
+          } else {
+            lastFilledIndex = (lastFilledIndex + 1) % slots.length;
+            slotIdx = lastFilledIndex;
+          }
+        }
+
+        const targetCard = slots[slotIdx];
+        const wrapper = targetCard.querySelector('.polaroid-img-wrapper');
+        if (wrapper) {
+          wrapper.innerHTML = `
+            <img src="${dataUrl}" alt="Foto Siti ${slotIdx + 1}">
+            <div class="polaroid-change-overlay">
+              <span>📷 Ganti Foto</span>
+            </div>
+          `;
+        }
+
+        const caption = targetCard.querySelector('.polaroid-caption');
+        if (caption) {
+          caption.innerText = 'Kenangan Spesial 💜';
+        }
+        const tag = targetCard.querySelector('.polaroid-tag');
+        if (tag) {
+          tag.innerText = '#SitiMaeFaulan21';
+        }
+
+        targetCard.classList.add('photo-filled');
+        targetSlotIndex = null;
+
+        savePolaroidsToStorage();
+
+        fireConfetti(0.5, 0.5);
+        playChimeSound();
+        showModal(
+          '📸',
+          'Foto Berhasil Dipasang!',
+          `Foto manismu telah berhasil dipasang di bingkai polaroid ke-${slotIdx + 1}! Total galeri tetap terjaga rapi dengan 6 bingkai saja. 💜`
+        );
+      });
+    }
+
+    function savePolaroidsToStorage() {
+      try {
+        const slots = document.querySelectorAll('.polaroid-gallery .polaroid');
+        const data = [];
+        slots.forEach((card, idx) => {
+          const img = card.querySelector('.polaroid-img-wrapper img');
+          if (img && img.src.startsWith('data:image')) {
+            data.push({
+              idx: idx,
+              src: img.src,
+              caption: card.querySelector('.polaroid-caption')?.innerText || 'Kenangan Spesial 💜',
+              tag: card.querySelector('.polaroid-tag')?.innerText || '#SitiMaeFaulan21'
+            });
+          }
+        });
+        localStorage.setItem('siti_polaroids_data_v1', JSON.stringify(data));
+      } catch (err) {
+        console.warn('LocalStorage save failed:', err);
+      }
+    }
+
+    function loadPolaroidsFromStorage() {
+      try {
+        const saved = localStorage.getItem('siti_polaroids_data_v1');
+        if (!saved) return;
+        const data = JSON.parse(saved);
+        const slots = document.querySelectorAll('.polaroid-gallery .polaroid');
+        data.forEach(item => {
+          if (slots[item.idx]) {
+            const card = slots[item.idx];
+            const wrapper = card.querySelector('.polaroid-img-wrapper');
+            if (wrapper) {
+              wrapper.innerHTML = `
+                <img src="${item.src}" alt="Foto Siti ${item.idx + 1}">
+                <div class="polaroid-change-overlay">
+                  <span>📷 Ganti Foto</span>
+                </div>
+              `;
+            }
+            if (item.caption) {
+              const cap = card.querySelector('.polaroid-caption');
+              if (cap) cap.innerText = item.caption;
+            }
+            if (item.tag) {
+              const tg = card.querySelector('.polaroid-tag');
+              if (tg) tg.innerText = item.tag;
+            }
+            card.classList.add('photo-filled');
+          }
+        });
+      } catch (err) {
+        console.warn('LocalStorage load failed:', err);
+      }
+    }
+
+    // Muat foto tersimpan saat halaman dibuka
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadPolaroidsFromStorage);
+    } else {
+      loadPolaroidsFromStorage();
+    }
+
+    // -------------------------------------------------------------
+    // 9. SKY LANTERNS (FLYING UPWARD)
+    // -------------------------------------------------------------
+    function releaseLantern(e) {
+      e.preventDefault();
+      const input = document.getElementById('wishInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      playChimeSound();
+      fireConfetti(0.5, 0.7);
+
+      // Create chip in wishes board
+      const board = document.getElementById('wishesBoard');
+      const chip = document.createElement('div');
+      chip.className = 'wish-chip';
+      chip.innerHTML = `🏮 ${text}`;
+      board.prepend(chip);
+
+      // Spawn visual flying lantern
+      for (let i = 0; i < 3; i++) {
+        setTimeout(() => {
+          const lantern = document.createElement('div');
+          lantern.className = 'floating-lantern';
+          lantern.style.left = (Math.random() * 70 + 15) + 'vw';
+          lantern.style.animationDuration = (Math.random() * 4 + 8) + 's';
+          document.body.appendChild(lantern);
+          setTimeout(() => lantern.remove(), 12000);
+        }, i * 400);
+      }
+
+      input.value = '';
+      showModal(
+        '🏮',
+        'Lentera Telah Diterbangkan!',
+        `Harapan indah: "${text}" telah melayang menuju langit malam. Semoga didengar dan dikabulkan oleh semesta untuk Siti! ✨`
+      );
+    }
+
+    // -------------------------------------------------------------
+    // 10. MODAL SYSTEM
+    // -------------------------------------------------------------
+    const modal = document.getElementById('customModal');
+    function showModal(icon, title, body) {
+      document.getElementById('modalIcon').innerText = icon;
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalBody').innerText = body;
+      modal.classList.add('active');
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+    }
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Copy bestie letter text
+    function copyBestieLetter() {
+      const text = `Selamat Ulang Tahun ke-21, Siti Maefaulan! 💜✨\n\nTerima kasih sudah menjadi sahabat terbaik yang selalu tulus, pendengar setia, dan membawa kehangatan. Di usiamu yang ke-21 ini, semoga semua langkahmu dimudahkan, impian besarmu tercapai, dan harimu selalu dipenuhi tawa dan kebahagiaan! Happy Birthday, Bestie! 🎉👑`;
+      navigator.clipboard.writeText(text).then(() => {
+        showModal('📋', 'Teks Berhasil Disalin!', 'Ucapan ulang tahun untuk Siti telah disalin ke clipboard. Kamu bisa mengirimkannya langsung lewat WhatsApp atau media sosial!');
+      });
+    }
+  </script>
+</body>
+
+</html>
