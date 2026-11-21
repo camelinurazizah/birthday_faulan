@@ -800,7 +800,7 @@
       width: 270px;
       transform: rotate(var(--rot, 0deg));
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      cursor: pointer;
+      cursor: default;
       position: relative;
     }
 
@@ -866,29 +866,6 @@
       display: block;
     }
 
-    .polaroid-change-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(59, 7, 100, 0.65);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #ffffff;
-      font-size: 0.82rem;
-      font-weight: 700;
-      gap: 6px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      border-radius: 4px;
-      backdrop-filter: blur(2px);
-      pointer-events: none;
-    }
-
-    .polaroid:hover .polaroid-change-overlay {
-      opacity: 1;
-    }
-
     .polaroid-caption {
       margin-top: 16px;
       font-family: 'Dancing Script', cursive;
@@ -905,37 +882,6 @@
       text-align: center;
       margin-top: 2px;
       font-weight: 600;
-    }
-
-    /* Photo Upload Button */
-    .photo-upload-bar {
-      margin-top: 30px;
-      text-align: center;
-    }
-
-    .upload-btn-label {
-      background: rgba(147, 51, 234, 0.2);
-      border: 1px dashed var(--purple-light);
-      color: var(--purple-lighter);
-      padding: 12px 26px;
-      border-radius: 50px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      font-family: inherit;
-      transition: all 0.3s ease;
-      outline: none;
-    }
-
-    .upload-btn-label:hover {
-      background: rgba(147, 51, 234, 0.45);
-      color: #fff;
-      border-color: #fff;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(168, 85, 247, 0.35);
     }
 
     /* WISH LANTERNS SECTION */
@@ -1387,124 +1333,69 @@
       <div class="section-header">
         <span class="section-badge">Sweet Memories</span>
         <h2 class="section-title">Galeri Polaroid Kenangan 📸</h2>
-        <p class="section-desc">Momen-momen manis yang tak terlupakan. Kamu juga bisa mengunggah fotomu bersama Siti
-          agar lebih berkesan!</p>
+        <p class="section-desc">Momen-momen manis yang tak terlupakan bersama Siti tercinta! ✨</p>
       </div>
 
       <div class="polaroid-gallery" id="polaroidGallery">
         <!-- Bingkai 1 -->
-        <div class="polaroid" onclick="triggerSlotUpload(0)" title="Klik untuk mengganti foto ini">
+        <div class="polaroid">
           <div class="polaroid-pin"></div>
           <div class="polaroid-img-wrapper">
-            <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#7e22ce" stroke-width="1.5">
-              <path
-                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                fill="#f3e8ff" />
-            </svg>
-            <div class="polaroid-change-overlay">
-              <span>📷 Klik Ganti Foto</span>
-            </div>
+            <img src="images/polaroid-1.jpg" alt="Kenangan Spesial Siti 1" loading="lazy">
           </div>
-          <div class="polaroid-caption">Bestie Forever 💜</div>
-          <div class="polaroid-tag">#FriendshipGoals</div>
+          <div class="polaroid-caption">Kenangan Spesial 💜</div>
+          <div class="polaroid-tag">#SitiMaeFaulan21</div>
         </div>
 
         <!-- Bingkai 2 -->
-        <div class="polaroid" onclick="triggerSlotUpload(1)" title="Klik untuk mengganti foto ini">
+        <div class="polaroid">
           <div class="polaroid-pin"></div>
           <div class="polaroid-img-wrapper">
-            <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#7e22ce" stroke-width="1.5">
-              <circle cx="12" cy="12" r="10" fill="#f3e8ff" />
-              <path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="#7e22ce" stroke-width="2" stroke-linecap="round" />
-              <line x1="9" y1="9" x2="9.01" y2="9" stroke="#7e22ce" stroke-width="3" stroke-linecap="round" />
-              <line x1="15" y1="9" x2="15.01" y2="9" stroke="#7e22ce" stroke-width="3" stroke-linecap="round" />
-            </svg>
-            <div class="polaroid-change-overlay">
-              <span>📷 Klik Ganti Foto</span>
-            </div>
+            <img src="images/polaroid-2.jpg" alt="Kenangan Spesial Siti 2" loading="lazy">
           </div>
-          <div class="polaroid-caption">Senyum Manis Siti ✨</div>
-          <div class="polaroid-tag">#AlwaysSmiling</div>
+          <div class="polaroid-caption">Kenangan Spesial 💜</div>
+          <div class="polaroid-tag">#SitiMaeFaulan21</div>
         </div>
 
         <!-- Bingkai 3 -->
-        <div class="polaroid" onclick="triggerSlotUpload(2)" title="Klik untuk mengganti foto ini">
+        <div class="polaroid">
           <div class="polaroid-pin"></div>
           <div class="polaroid-img-wrapper">
-            <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#7e22ce" stroke-width="1.5">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-                fill="#fef08a" stroke="#d97706" />
-            </svg>
-            <div class="polaroid-change-overlay">
-              <span>📷 Klik Ganti Foto</span>
-            </div>
+            <img src="images/polaroid-3.jpg" alt="Kenangan Spesial Siti 3" loading="lazy">
           </div>
-          <div class="polaroid-caption">Officially 21 & Fab! 👑</div>
-          <div class="polaroid-tag">#Chapter21</div>
+          <div class="polaroid-caption">Kenangan Spesial 💜</div>
+          <div class="polaroid-tag">#SitiMaeFaulan21</div>
         </div>
 
         <!-- Bingkai 4 -->
-        <div class="polaroid" onclick="triggerSlotUpload(3)" title="Klik untuk mengganti foto ini">
+        <div class="polaroid">
           <div class="polaroid-pin"></div>
           <div class="polaroid-img-wrapper">
-            <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#7e22ce" stroke-width="1.5">
-              <rect x="3" y="8" width="18" height="13" rx="2" fill="#f3e8ff" stroke="#7e22ce" />
-              <path d="M16 8V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v3" stroke="#7e22ce" stroke-width="2" />
-            </svg>
-            <div class="polaroid-change-overlay">
-              <span>📷 Klik Ganti Foto</span>
-            </div>
+            <img src="images/polaroid-4.jpg" alt="Kenangan Spesial Siti 4" loading="lazy">
           </div>
-          <div class="polaroid-caption">Partner Curhat & Nongki ☕</div>
-          <div class="polaroid-tag">#HappyMoments</div>
+          <div class="polaroid-caption">Kenangan Spesial 💜</div>
+          <div class="polaroid-tag">#SitiMaeFaulan21</div>
         </div>
 
         <!-- Bingkai 5 -->
-        <div class="polaroid" onclick="triggerSlotUpload(4)" title="Klik untuk mengganti foto ini">
+        <div class="polaroid">
           <div class="polaroid-pin"></div>
           <div class="polaroid-img-wrapper">
-            <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#7e22ce" stroke-width="1.5">
-              <circle cx="12" cy="12" r="3.5" fill="#fbcfe8" stroke="#db2777" stroke-width="1.5" />
-              <circle cx="12" cy="5.5" r="3" fill="#f5d0fe" stroke="#a855f7" stroke-width="1.5" />
-              <circle cx="12" cy="18.5" r="3" fill="#f5d0fe" stroke="#a855f7" stroke-width="1.5" />
-              <circle cx="5.5" cy="12" r="3" fill="#f5d0fe" stroke="#a855f7" stroke-width="1.5" />
-              <circle cx="18.5" cy="12" r="3" fill="#f5d0fe" stroke="#a855f7" stroke-width="1.5" />
-            </svg>
-            <div class="polaroid-change-overlay">
-              <span>📷 Klik Ganti Foto</span>
-            </div>
+            <img src="images/polaroid-5.jpg" alt="Kenangan Spesial Siti 5" loading="lazy">
           </div>
-          <div class="polaroid-caption">Momen Paling Berkesan 🌸</div>
-          <div class="polaroid-tag">#SweetMemories</div>
+          <div class="polaroid-caption">Kenangan Spesial 💜</div>
+          <div class="polaroid-tag">#SitiMaeFaulan21</div>
         </div>
 
         <!-- Bingkai 6 -->
-        <div class="polaroid" onclick="triggerSlotUpload(5)" title="Klik untuk mengganti foto ini">
+        <div class="polaroid">
           <div class="polaroid-pin"></div>
           <div class="polaroid-img-wrapper">
-            <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#7e22ce" stroke-width="1.5">
-              <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" fill="#f3e8ff"
-                stroke="#7e22ce" stroke-width="1.5" />
-              <circle cx="12" cy="13" r="4" fill="#e9d5ff" stroke="#7e22ce" stroke-width="1.5" />
-            </svg>
-            <div class="polaroid-change-overlay">
-              <span>📷 Klik Ganti Foto</span>
-            </div>
+            <img src="images/polaroid-6.jpg" alt="Kenangan Spesial Siti 6" loading="lazy">
           </div>
-          <div class="polaroid-caption">Sahabat Sejati Selamanya 💖</div>
-          <div class="polaroid-tag">#BestFriends21</div>
+          <div class="polaroid-caption">Kenangan Spesial 💜</div>
+          <div class="polaroid-tag">#SitiMaeFaulan21</div>
         </div>
-      </div>
-
-      <div class="photo-upload-bar">
-        <button type="button" class="upload-btn-label" onclick="handleMainUploadClick()">
-          <span>📷 Ganti atau Tambah Foto Asli Siti (Maks. 6 Bingkai)</span>
-        </button>
-        <input type="file" id="photoInput" accept="image/*" style="display: none;" onchange="handlePhotoUpload(event)">
-        <p style="margin-top: 10px; font-size: 0.85rem; color: var(--purple-lighter); opacity: 0.85;">
-          💡 Tip: Kamu juga bisa klik langsung pada salah satu dari 6 bingkai di atas untuk memilih foto yang ingin
-          diganti!
-        </p>
       </div>
     </section>
 
@@ -1894,196 +1785,7 @@
     });
 
     // -------------------------------------------------------------
-    // 7. POLAROID REAL PHOTO UPLOAD (FIXED 6 FRAMES ONLY)
-    // -------------------------------------------------------------
-    let targetSlotIndex = null;
-    let lastFilledIndex = -1;
-
-    function triggerSlotUpload(slotIdx) {
-      targetSlotIndex = slotIdx;
-      const input = document.getElementById('photoInput');
-      input.value = '';
-      input.click();
-    }
-
-    function handleMainUploadClick() {
-      const slots = document.querySelectorAll('.polaroid-gallery .polaroid');
-      if (!slots || slots.length === 0) return;
-
-      let nextSlot = -1;
-      // Cari bingkai pertama yang belum diisi foto asli
-      for (let i = 0; i < slots.length; i++) {
-        if (!slots[i].classList.contains('photo-filled')) {
-          nextSlot = i;
-          break;
-        }
-      }
-
-      // Jika 6 bingkai sudah terisi semua, ganti bingkai berikutnya secara bergiliran tanpa menambah bingkai
-      if (nextSlot === -1) {
-        lastFilledIndex = (lastFilledIndex + 1) % slots.length;
-        nextSlot = lastFilledIndex;
-      }
-
-      triggerSlotUpload(nextSlot);
-    }
-
-    function processImageFile(file, maxWidth, callback) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        const img = new Image();
-        img.onload = function () {
-          let w = img.width;
-          let h = img.height;
-          if (w > maxWidth || h > maxWidth) {
-            if (w > h) {
-              h = Math.round((h * maxWidth) / w);
-              w = maxWidth;
-            } else {
-              w = Math.round((w * maxWidth) / h);
-              h = maxWidth;
-            }
-          }
-          const canvas = document.createElement('canvas');
-          canvas.width = w;
-          canvas.height = h;
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0, w, h);
-          const dataUrl = canvas.toDataURL('image/jpeg', 0.88);
-          callback(dataUrl);
-        };
-        img.onerror = function () {
-          callback(e.target.result);
-        };
-        img.src = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-
-    function handlePhotoUpload(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-
-      processImageFile(file, 800, function (dataUrl) {
-        const slots = document.querySelectorAll('.polaroid-gallery .polaroid');
-        if (!slots || slots.length === 0) return;
-
-        let slotIdx = targetSlotIndex;
-        if (slotIdx === null || slotIdx < 0 || slotIdx >= slots.length) {
-          let found = -1;
-          for (let i = 0; i < slots.length; i++) {
-            if (!slots[i].classList.contains('photo-filled')) {
-              found = i;
-              break;
-            }
-          }
-          if (found !== -1) {
-            slotIdx = found;
-          } else {
-            lastFilledIndex = (lastFilledIndex + 1) % slots.length;
-            slotIdx = lastFilledIndex;
-          }
-        }
-
-        const targetCard = slots[slotIdx];
-        const wrapper = targetCard.querySelector('.polaroid-img-wrapper');
-        if (wrapper) {
-          wrapper.innerHTML = `
-            <img src="${dataUrl}" alt="Foto Siti ${slotIdx + 1}">
-            <div class="polaroid-change-overlay">
-              <span>📷 Ganti Foto</span>
-            </div>
-          `;
-        }
-
-        const caption = targetCard.querySelector('.polaroid-caption');
-        if (caption) {
-          caption.innerText = 'Kenangan Spesial 💜';
-        }
-        const tag = targetCard.querySelector('.polaroid-tag');
-        if (tag) {
-          tag.innerText = '#SitiMaeFaulan21';
-        }
-
-        targetCard.classList.add('photo-filled');
-        targetSlotIndex = null;
-
-        savePolaroidsToStorage();
-
-        fireConfetti(0.5, 0.5);
-        playChimeSound();
-        showModal(
-          '📸',
-          'Foto Berhasil Dipasang!',
-          `Foto manismu telah berhasil dipasang di bingkai polaroid ke-${slotIdx + 1}! Total galeri tetap terjaga rapi dengan 6 bingkai saja. 💜`
-        );
-      });
-    }
-
-    function savePolaroidsToStorage() {
-      try {
-        const slots = document.querySelectorAll('.polaroid-gallery .polaroid');
-        const data = [];
-        slots.forEach((card, idx) => {
-          const img = card.querySelector('.polaroid-img-wrapper img');
-          if (img && img.src.startsWith('data:image')) {
-            data.push({
-              idx: idx,
-              src: img.src,
-              caption: card.querySelector('.polaroid-caption')?.innerText || 'Kenangan Spesial 💜',
-              tag: card.querySelector('.polaroid-tag')?.innerText || '#SitiMaeFaulan21'
-            });
-          }
-        });
-        localStorage.setItem('siti_polaroids_data_v1', JSON.stringify(data));
-      } catch (err) {
-        console.warn('LocalStorage save failed:', err);
-      }
-    }
-
-    function loadPolaroidsFromStorage() {
-      try {
-        const saved = localStorage.getItem('siti_polaroids_data_v1');
-        if (!saved) return;
-        const data = JSON.parse(saved);
-        const slots = document.querySelectorAll('.polaroid-gallery .polaroid');
-        data.forEach(item => {
-          if (slots[item.idx]) {
-            const card = slots[item.idx];
-            const wrapper = card.querySelector('.polaroid-img-wrapper');
-            if (wrapper) {
-              wrapper.innerHTML = `
-                <img src="${item.src}" alt="Foto Siti ${item.idx + 1}">
-                <div class="polaroid-change-overlay">
-                  <span>📷 Ganti Foto</span>
-                </div>
-              `;
-            }
-            if (item.caption) {
-              const cap = card.querySelector('.polaroid-caption');
-              if (cap) cap.innerText = item.caption;
-            }
-            if (item.tag) {
-              const tg = card.querySelector('.polaroid-tag');
-              if (tg) tg.innerText = item.tag;
-            }
-            card.classList.add('photo-filled');
-          }
-        });
-      } catch (err) {
-        console.warn('LocalStorage load failed:', err);
-      }
-    }
-
-    // Muat foto tersimpan saat halaman dibuka
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', loadPolaroidsFromStorage);
-    } else {
-      loadPolaroidsFromStorage();
-    }
-
-    // -------------------------------------------------------------
-    // 9. SKY LANTERNS (FLYING UPWARD)
+    // 7. SKY LANTERNS (FLYING UPWARD)
     // -------------------------------------------------------------
     function releaseLantern(e) {
       e.preventDefault();
